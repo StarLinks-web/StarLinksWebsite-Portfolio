@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elara Solís — Photographer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --white: #FAFAF8;
+    --ink: #1A1A18;
+    --ink-soft: #5A5A55;
+    --ink-faint: #9A9A94;
+    --sage: #8FAF9A;
+    --sage-light: #D4E4DA;
+    --sage-faint: #EBF2EE;
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--white);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-weight: 300;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 4rem;
+    background: rgba(250, 250, 248, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(143, 175, 154, 0.18);
+  }
+
+  .nav-brand {
+    font-family: var(--serif);
+    font-size: 1.25rem;
+    font-weight: 300;
+    letter-spacing: 0.04em;
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--ink); }
+
+  /* HERO */
+  #hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 8rem 2rem 6rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-eyebrow {
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-name {
+    font-family: var(--serif);
+    font-size: clamp(3.5rem, 9vw, 8rem);
+    font-weight: 300;
+    line-height: 1.0;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-name em {
+    font-style: italic;
+    color: var(--sage);
+  }
+
+  .hero-tagline {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    font-weight: 300;
+    color: var(--ink-soft);
+    max-width: 38ch;
+    margin-bottom: 3.5rem;
+    letter-spacing: 0.01em;
+  }
+
+  .hero-cta {
+    display: inline-block;
+    font-size: 0.78rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid var(--sage);
+    padding-bottom: 2px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .hero-cta:hover {
+    color: var(--sage);
+  }
+
+  .hero-scroll-line {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1px;
+    height: 60px;
+    background: linear-gradient(to bottom, transparent, var(--sage));
+    animation: scrollPulse 2.5s ease-in-out infinite;
+  }
+
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.3; transform: translateX(-50%) scaleY(0.8); }
+    50% { opacity: 0.8; transform: translateX(-50%) scaleY(1); }
+  }
+
+  /* SECTION COMMONS */
+  section {
+    padding: 7rem 2rem;
+  }
+
+  .section-inner {
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 2.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .section-label::after {
+    content: '';
+    display: inline-block;
+    width: 32px;
+    height: 1px;
+    background: var(--sage-light);
+  }
+
+  /* ABOUT */
+  #about {
+    background: var(--sage-faint);
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    gap: 6rem;
+    align-items: center;
+  }
+
+  .about-image-placeholder {
+    aspect-ratio: 3/4;
+    background: var(--sage-light);
+    border-radius: 2px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+    padding: 1.5rem;
+  }
+
+  .about-image-placeholder::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 20px,
+        rgba(143,175,154,0.12) 20px,
+        rgba(143,175,154,0.12) 21px
+      );
+  }
+
+  .about-image-caption {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+    position: relative;
+    z-index: 1;
+  }
+
+  .about-text h2 {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 300;
+    line-height: 1.2;
+    color: var(--ink);
+    margin-bottom: 1.5rem;
+  }
+
+  .about-text p {
+    font-size: 1.05rem;
+    color: var(--ink-soft);
+    line-height: 1.85;
+    max-width: 52ch;
+  }
+
+  .about-text p + p {
+    margin-top: 1rem;
+  }
+
+  .about-stat-row {
+    display: flex;
+    gap: 2.5rem;
+    margin-top: 2.5rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid var(--sage-light);
+  }
+
+  .about-stat strong {
+    display: block;
+    font-family: var(--serif);
+    font-size: 2rem;
+    font-weight: 300;
+    color: var(--ink);
+    line-height: 1;
+    margin-bottom: 0.25rem;
+  }
+
+  .about-stat span {
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  /* WORK */
+  #work {
+    background: var(--white);
+  }
+
+  .work-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 3rem;
+  }
+
+  .work-header h2 {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 300;
+    color: var(--ink);
+  }
+
+  .work-filter {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+  }
+
+  .work-filter li {
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+
+  .work-filter li.active,
+  .work-filter li:hover {
+    color: var(--ink);
+  }
+
+  .work-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: auto;
+    gap: 1rem;
+  }
+
+  .photo-block {
+    background: var(--sage-light);
+    border-radius: 2px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    transition: opacity 0.3s;
+  }
+
+  .photo-block:hover { opacity: 0.88; }
+
+  .photo-block::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      repeating-linear-gradient(
+        -45deg,
+        transparent,
+        transparent 24px,
+        rgba(143,175,154,0.1) 24px,
+        rgba(143,175,154,0.1) 25px
+      );
+  }
+
+  .photo-block-label {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    background: rgba(250,250,248,0.85);
+    padding: 0.25rem 0.6rem;
+    border-radius: 1px;
+  }
+
+  /* Grid layout for visual variety */
+  .photo-block:nth-child(1) { grid-column: span 5; aspect-ratio: 3/4; }
+  .photo-block:nth-child(2) { grid-column: span 7; aspect-ratio: 16/10; }
+  .photo-block:nth-child(3) { grid-column: span 4; aspect-ratio: 1; }
+  .photo-block:nth-child(4) { grid-column: span 4; aspect-ratio: 1; }
+  .photo-block:nth-child(5) { grid-column: span 4; aspect-ratio: 1; }
+  .photo-block:nth-child(6) { grid-column: span 7; aspect-ratio: 3/4; }
+  .photo-block:nth-child(7) { grid-column: span 5; aspect-ratio: 4/5; }
+
+  /* Give each a slightly distinct sage tone */
+  .photo-block:nth-child(odd) { background: #C8DACD; }
+  .photo-block:nth-child(even) { background: #B8CFBE; }
+
+  /* QUOTE */
+  #quote {
+    background: var(--ink);
+    padding: 9rem 2rem;
+    text-align: center;
+  }
+
+  .quote-mark {
+    font-family: var(--serif);
+    font-size: 5rem;
+    line-height: 0.5;
+    color: var(--sage);
+    display: block;
+    margin-bottom: 1.5rem;
+  }
+
+  blockquote {
+    font-family: var(--serif);
+    font-size: clamp(1.5rem, 4vw, 2.8rem);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--white);
+    line-height: 1.4;
+    max-width: 22em;
+    margin: 0 auto;
+    letter-spacing: 0.01em;
+  }
+
+  .quote-attr {
+    margin-top: 2.5rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--sage);
+  }
+
+  /* CONTACT */
+  #contact {
+    background: var(--white);
+    text-align: center;
+  }
+
+  #contact h2 {
+    font-family: var(--serif);
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    font-weight: 300;
+    color: var(--ink);
+    line-height: 1.1;
+    margin-bottom: 1rem;
+  }
+
+  #contact h2 em {
+    font-style: italic;
+    color: var(--sage);
+  }
+
+  .contact-sub {
+    font-size: 1rem;
+    color: var(--ink-soft);
+    margin-bottom: 3rem;
+    max-width: 38ch;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .contact-email {
+    display: inline-block;
+    font-family: var(--serif);
+    font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+    font-weight: 300;
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid var(--sage);
+    padding-bottom: 2px;
+    margin-bottom: 3rem;
+    transition: color 0.2s;
+  }
+
+  .contact-email:hover { color: var(--sage); }
+
+  .social-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    list-style: none;
+    margin-bottom: 1rem;
+  }
+
+  .social-links a {
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .social-links a:hover { color: var(--ink); }
+
+  /* FOOTER */
+  footer {
+    background: var(--ink);
+    padding: 2.5rem 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-brand {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    font-weight: 300;
+    color: rgba(250,250,248,0.8);
+    letter-spacing: 0.04em;
+  }
+
+  .footer-copy {
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    color: rgba(250,250,248,0.3);
+  }
+
+  /* ANIMATIONS */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .fade-up:nth-child(2) { transition-delay: 0.1s; }
+  .fade-up:nth-child(3) { transition-delay: 0.2s; }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 1.25rem 1.5rem; }
+    .nav-links { gap: 1.5rem; }
+
+    .about-grid {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+
+    .work-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1.5rem;
+    }
+
+    .photo-block:nth-child(1) { grid-column: span 12; }
+    .photo-block:nth-child(2) { grid-column: span 12; }
+    .photo-block:nth-child(3) { grid-column: span 6; }
+    .photo-block:nth-child(4) { grid-column: span 6; }
+    .photo-block:nth-child(5) { grid-column: span 12; }
+    .photo-block:nth-child(6) { grid-column: span 12; }
+    .photo-block:nth-child(7) { grid-column: span 12; }
+
+    footer {
+      flex-direction: column;
+      gap: 0.75rem;
+      text-align: center;
+      padding: 2rem 1.5rem;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+  <a href="#hero" class="nav-brand">Elara Solís</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <p class="hero-eyebrow">Photography &amp; Visual Stories</p>
+  <h1 class="hero-name">Elara<br><em>Solís</em></h1>
+  <p class="hero-tagline">Capturing quiet moments and the stories that live just beneath the surface.</p>
+  <a href="#work" class="hero-cta">View Work</a>
+  <div class="hero-scroll-line" aria-hidden="true"></div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-image-placeholder" aria-label="Portrait placeholder">
+        <span class="about-image-caption">Portland, Oregon — 2024</span>
+      </div>
+      <div class="about-text">
+        <div class="section-label">About</div>
+        <h2>Light as a<br>first language.</h2>
+        <p>I'm a Portland-based photographer drawn to the in-between — the pause before a laugh, the last light on an empty street, the way stillness can hold an entire mood.</p>
+        <p>My work spans portraiture, documentary, and editorial. Whether shooting on film or digital, I approach every frame with patience. I'm not chasing the decisive moment — I'm waiting for the honest one.</p>
+        <div class="about-stat-row">
+          <div class="about-stat">
+            <strong>12+</strong>
+            <span>Years shooting</span>
+          </div>
+          <div class="about-stat">
+            <strong>04</strong>
+            <span>Countries covered</span>
+          </div>
+          <div class="about-stat">
+            <strong>30+</strong>
+            <span>Editorial clients</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WORK -->
+<section id="work">
+  <div class="section-inner">
+    <div class="work-header">
+      <div>
+        <div class="section-label">Work</div>
+        <h2>Selected Projects</h2>
+      </div>
+      <ul class="work-filter">
+        <li class="active">All</li>
+        <li>Portrait</li>
+        <li>Street</li>
+        <li>Nature</li>
+        <li>Editorial</li>
+      </ul>
+    </div>
+
+    <div class="work-grid">
+      <div class="photo-block fade-up">
+        <span class="photo-block-label">Portrait</span>
+      </div>
+      <div class="photo-block fade-up">
+        <span class="photo-block-label">Editorial — Veld Magazine</span>
+      </div>
+      <div class="photo-block fade-up">
+        <span class="photo-block-label">Street, Tokyo</span>
+      </div>
+      <div class="photo-block fade-up">
+        <span class="photo-block-label">Nature</span>
+      </div>
+      <div class="photo-block fade-up">
+        <span class="photo-block-label">Portrait</span>
+      </div>
+      <div class="photo-block fade-up">
+        <span class="photo-block-label">Street, Portland</span>
+      </div>
+      <div class="photo-block fade-up">
+        <span class="photo-block-label">Editorial — Form Studio</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE -->
+<section id="quote">
+  <span class="quote-mark" aria-hidden="true">"</span>
+  <blockquote>
+    A photograph doesn't stop time. It asks you to pay attention to it.
+  </blockquote>
+  <p class="quote-attr">— Elara Solís</p>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-label" style="justify-content: center;">Contact</div>
+    <h2>Let's make<br>something <em>real.</em></h2>
+    <p class="contact-sub">Open to editorial commissions, brand collaborations, and personal projects.</p>
+    <a href="mailto:hello@elarasolis.com" class="contact-email">hello@elarasolis.com</a>
+    <ul class="social-links">
+      <li><a href="#" aria-label="Instagram">Instagram</a></li>
+      <li><a href="#" aria-label="Behance">Behance</a></li>
+      <li><a href="#" aria-label="Twitter/X">X / Twitter</a></li>
+      <li><a href="#" aria-label="LinkedIn">LinkedIn</a></li>
+    </ul>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-brand">Elara Solís</span>
+  <span class="footer-copy">© 2025 Elara Solís. All rights reserved.</span>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  document.querySelectorAll('.work-filter li').forEach(li => {
+    li.addEventListener('click', () => {
+      document.querySelectorAll('.work-filter li').forEach(l => l.classList.remove('active'));
+      li.classList.add('active');
+    });
+  });
+</script>
+
+</body>
+</html>
