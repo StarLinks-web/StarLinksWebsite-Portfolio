@@ -192,30 +192,13 @@
     align-items: center;
   }
 
-  .about-image-placeholder {
-    aspect-ratio: 3/4;
-    background: var(--sage-light);
-    border-radius: 2px;
-    position: relative;
-    overflow: hidden;
-    display: flex;
-    align-items: flex-end;
-    padding: 1.5rem;
-  }
-
-  .about-image-placeholder::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background:
-      repeating-linear-gradient(
-        45deg,
-        transparent,
-        transparent 20px,
-        rgba(143,175,154,0.12) 20px,
-        rgba(143,175,154,0.12) 21px
-      );
-  }
+  .about-image {
+  aspect-ratio: 3 / 4;
+  border-radius: 2px;
+  background-image: url("images/portrait.jpg");
+  background-size: cover;
+  background-position: center;
+}
 
   .about-image-caption {
     font-family: var(--serif);
@@ -325,6 +308,13 @@
     cursor: pointer;
     transition: opacity 0.3s;
   }
+  
+  .photo-block img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
 
   .photo-block:hover { opacity: 0.88; }
 
@@ -564,6 +554,11 @@
   <div class="section-inner">
     <div class="about-grid">
       <div class="about-image-placeholder" aria-label="Portrait placeholder">
+        <img
+  src="https://media.istockphoto.com/id/1550114537/photo/south-downs-landscape.jpg?s=612x612&w=0&k=20&c=_cpeP8Cm3fwnFKLKlqR-O_57dUd8-1MaJaN85pnW5a8=" 
+  alt="Portrait of Elara Solís"
+  class="about-image"
+/>
         <span class="about-image-caption">Portland, Oregon — 2024</span>
       </div>
       <div class="about-text">
@@ -593,42 +588,59 @@
 <!-- WORK -->
 <section id="work">
   <div class="section-inner">
+
     <div class="work-header">
       <div>
         <div class="section-label">Work</div>
         <h2>Selected Projects</h2>
       </div>
+
       <ul class="work-filter">
-        <li class="active">All</li>
-        <li>Portrait</li>
-        <li>Street</li>
-        <li>Nature</li>
-        <li>Editorial</li>
+        <li class="active" data-filter="all">All</li>
+        <li data-filter="portrait">Portrait</li>
+        <li data-filter="street">Street</li>
+        <li data-filter="nature">Nature</li>
+        <li data-filter="editorial">Editorial</li>
       </ul>
     </div>
 
     <div class="work-grid">
-      <div class="photo-block fade-up">
+
+      <div class="photo-block fade-up" data-category="portrait">
+        <img src="https://www.scottsmorraphotography.com/images/640/Lanikai-Beach-Sunrise-Palm-Trees-Oahu-Hawaii.jpg" alt="Portrait photography">
         <span class="photo-block-label">Portrait</span>
       </div>
-      <div class="photo-block fade-up">
+
+      <div class="photo-block fade-up" data-category="editorial">
+        <img src="https://images.unsplash.com/photo-1542038784456-1ea8e935640e?auto=format&fit=crop&w=1200&q=60" alt="Editorial photography">
         <span class="photo-block-label">Editorial — Veld Magazine</span>
       </div>
-      <div class="photo-block fade-up">
+
+      <div class="photo-block fade-up" data-category="street">
+        <img src="https://ilovemykidsblog.net/wp-content/uploads/2014/09/EB8B4409_tn.jpg" alt="Street photography Tokyo">
         <span class="photo-block-label">Street, Tokyo</span>
       </div>
-      <div class="photo-block fade-up">
+
+      <div class="photo-block fade-up" data-category="nature">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhH0dwbeFPQfBmloTIdpnqcBz7C8isTocyDg&s" alt="Nature photography">
         <span class="photo-block-label">Nature</span>
       </div>
-      <div class="photo-block fade-up">
+
+      <div class="photo-block fade-up" data-category="portrait">
+        <img src="https://d1kw7y14plrcrj.cloudfront.net/assets/images/ppmag_articles/201706-header_brownwood_mlp.jpg" alt="Portrait photography">
         <span class="photo-block-label">Portrait</span>
       </div>
-      <div class="photo-block fade-up">
+
+      <div class="photo-block fade-up" data-category="street">
+        <img src="https://www.all-about-photo.com/images/articles/ART-523-1.jpg" alt="Street photography Portland">
         <span class="photo-block-label">Street, Portland</span>
       </div>
-      <div class="photo-block fade-up">
+
+      <div class="photo-block fade-up" data-category="editorial">
+        <img src="https://static01.nyt.com/images/2018/01/21/magazine/21mag-onphoto1/21mag-onphoto1-articleLarge.jpg?auto=webp" alt="Editorial photography">
         <span class="photo-block-label">Editorial — Form Studio</span>
       </div>
+
     </div>
   </div>
 </section>
